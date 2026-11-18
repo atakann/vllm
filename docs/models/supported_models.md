@@ -670,6 +670,10 @@ These models primarily accept the [`LLM.generate`](./generative_models.md#llmgen
     `HYV4FlashForConditionalGeneration`, which vLLM maps to
     `HYV4FlashVLForConditionalGeneration`.
 
+    On compute capability 12 (RTX 50, RTX PRO Blackwell, DGX Spark), attention
+    runs through FlashInfer's SM120 sparse MLA kernels with the `fp8_ds_mla` KV
+    cache. Expert weights may be blockwise FP8, MXFP4 or ModelOpt NVFP4.
+
 Unlimited-OCR-2's optional page-count guard respects sampling constraints, preserving EOS
 when it is the only remaining permitted token.
 
